@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="styles.css">
+    <script href="script.js"></script>
+</head>
+<body>
+    <h1 align="center">SIGN UP FORM</h1>
+    <div class="form-page">
+    <form class="sign">
+        <div class="Username" id="Username">
+            <label>Username</label>
+            <input class="ip" type="text" placeholder="Your Username" required>
+        </div>
+        <br>
+        <div class="password" id="password">
+            <label for="password1">Password</label>
+            <input class="ip" id="password1" type="password" placeholder="Enter password" maxlength="20" required>
+        </div>
+        
+        <div id="val"></div>
+        <br>
+        <div class="confirm" id="confirm">
+            <label>Confirm password</label>
+            <input class="ip" type="password" placeholder="Re-enter password" maxlength="20" required>
+        </div>
+        <br>
+        <div class="mail mil" id="mail">
+            <label>Email</label>
+            <input class="email ip" type="email" placeholder="example@gmail.com" required>
+        </div>
+        <br>
+        <div class="phone ph" id="phone">
+            <label>Phone</label>
+            <input class="ip" type="text" placeholder="000-000-0000">
+        </div>
+        <br>
+        <div class="dob" id="dob">
+            <label class="lab-dob" >DOB</label>
+            <input type="date" class="ip db">
+        </div>
+        <br>
+        <div class="gender" id="gender">
+            <label>Gender</label>
+            <input type="radio" name="Gender"> Male
+            <input type="radio" name="Gender"> Female
+            <input type="radio" name="Gender"> Others
+        </div>
+        <br>
+        <div class="lang" id="lang">
+            <label >Language</label>
+            <select>
+                <option>English (United States)</option>
+                <option>English (Indian)</option>
+            </select>
+        </div>
+        <br>
+        <div class="check" id="check">
+            <input type="checkbox" class="accept"> I accept to the terms and conditions
+            <br>
+            <input type="checkbox"> Subscribe to newsletter
+        </div>
+        <br>
+        <div class="buttons" align="center">
+            <button class="submit" id="signup"> SIGNUP </button>
+            <button class="cancel" id="cancel"> CANCEL </button>
+        </div>
+    </form>
+    <p>Already have an account?  <a class="linking" href="login.html"> LOGIN</a></p>
+    </div>
+    <script>
+        document.getElementById("signup").addEventListener("click", function() {
+            let password = document.getElementById("password1").value;
+            const res = checkPasswordStrength(password);
+            document.getElementById("val").innerHTML = res;
+
+            function checkPasswordStrength(password) {
+                if (password.length < 6) {
+                    return "Password should be more than 6 characters";
+                } else {
+                    let hasLetter = /[a-zA-Z]/.test(password);
+                    let hasDigit = /[0-9]/.test(password);
+                    let hasSpecial = /[!@#$%^&*()]/.test(password);
+                    if (hasLetter && hasDigit && hasSpecial) {
+                        return "Your password is Strong";
+                    } else {
+                        return "Your password is Medium";
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
